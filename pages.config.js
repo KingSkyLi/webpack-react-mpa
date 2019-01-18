@@ -7,7 +7,7 @@ const pages = [
             index:'./src/pages/index/index.js',
         },
         name:'index',
-        descraption:'这是首页',
+        description:'这是首页',
         chunks:['react','index']
     },{
         title:'detail',
@@ -15,7 +15,7 @@ const pages = [
             detail:'./src/pages/detail/detail.js',
         },
         name:'detail',
-        descraption:'这是详情页',
+        description:'这是详情页',
         chunks:['react','detail']
     }
 ]
@@ -24,7 +24,7 @@ const generatePage = ({
     entry='',
     template="./index.html",
     name='',
-    descraption='',
+    description='',
     chunks=[]
     }={}
     ) => {
@@ -34,16 +34,18 @@ const generatePage = ({
                 new HtmlWebpackPlugin({
                     title,
                     template,
-                    descraption,
+                    description,
                     filename: name + '.html',
                     chunks,
                 })
             ]
         }
 }
-const Pages = [];
+const pageEntrys = [];
 pages.map(item=>{
-    Pages.push(generatePage(item));
+    pageEntrys.push(generatePage(item));
 });
-console.log(Pages);
-module.exports = Pages;
+module.exports = {
+    pageEntrys,
+    pages,
+}

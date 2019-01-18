@@ -1,6 +1,4 @@
-const Pages = require('./pages.config.js');
 const path = require('path');
-const merge = require('webpack-merge');
 const baseConfig = {
     entry: {
         index: './src/pages/index/index.js',
@@ -13,6 +11,13 @@ const baseConfig = {
     plugins: [
 
     ],
+    module: {
+        rules: [{
+            test: /\.jsx?$/,
+            loader: 'babel-loader',
+            exclude: /(node_modules)/
+        }]
+    },
     optimization: {
         splitChunks: {
             cacheGroups: {
@@ -25,5 +30,4 @@ const baseConfig = {
         }
     }
 }
-module.exports =merge([baseConfig,...Pages]);
-
+module.exports = baseConfig;
