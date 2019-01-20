@@ -1,6 +1,8 @@
 const merge = require('webpack-merge');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const pagesConfig = require('./pages.config');
 const prodConfig = {
@@ -13,9 +15,8 @@ const prodConfig = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "css/[name].[hash].css",
-            chunkFilename: "[id].css"
+            chunkFilename: "[name].css"
         }),
-        
     ],
     module: {
         rules: [{
@@ -70,18 +71,25 @@ const prodConfig = {
         }]
     },
     optimization: {
-        splitChunks: {
-            cacheGroups: {
-                react: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'react',
-                    chunks: 'all',
-                }
-            }
-        },
         minimizer: [
             new UglifyJsPlugin(),
         ],
+        splitChunks: {
+            cacheGroups: {
+                react: {
+                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                    name: 'react',
+                    chunks: 'all',
+                    priority:2
+                },
+                vender: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vender',
+                    chunks: 'all',
+                    priority:1
+                }
+            }
+        },
     }
 }
 module.exports = merge([prodConfig, ...pagesConfig.pageEntrys]);

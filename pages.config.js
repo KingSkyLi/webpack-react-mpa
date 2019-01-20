@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 // 此处pages可以提取出一个文件，并且通过npm run new-page --name进行修改此文件
 const pages = [
     {
@@ -8,7 +9,7 @@ const pages = [
         },
         name:'index',
         description:'这是首页',
-        chunks:['react','index']
+        chunks:['react','vender','index']
     },{
         title:'detail',
         entry:{
@@ -16,7 +17,7 @@ const pages = [
         },
         name:'detail',
         description:'这是详情页',
-        chunks:['react','detail']
+        chunks:['react','vender','detail']
     }
 ]
 const generatePage = ({
