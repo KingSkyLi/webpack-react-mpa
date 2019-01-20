@@ -45,6 +45,7 @@ const pageEntrys = [];
 pages.map(item=>{
     pageEntrys.push(generatePage(item));
 });
+console.log(pageEntrys);
 module.exports = {
     pageEntrys,
     pages,
