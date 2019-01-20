@@ -1,0 +1,19 @@
+const pages = [
+    {
+        title:'index',
+        entry:{
+            index:'./src/pages/index/index.js',
+        },
+        name:'index',
+        description:'这是首页',
+        chunks:['react','vender','index']
+    },{
+        title:'detail',
+        entry:{
+            detail:'./src/pages/detail/detail.js',
+        },
+        name:'detail',
+        description:'这是详情页',
+        chunks:['react','vender','detail']
+    }
+]

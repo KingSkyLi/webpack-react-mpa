@@ -15,7 +15,7 @@ const prodConfig = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: "css/[name].[hash].css",
-            chunkFilename: "[name].css"
+            chunkFilename: "css/[name].[hash].css"
         }),
     ],
     module: {
