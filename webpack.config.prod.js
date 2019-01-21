@@ -3,19 +3,20 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const pagesConfig = require('./pages.config');
 const prodConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].[hash].js',
-        publicPath:'/',
+        filename: 'js/[name].[chunkhash].js',
+        publicPath: '/',
     },
     mode: 'production',
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].[hash].css",
-            chunkFilename: "css/[name].[hash].css"
+            filename: "css/[name].[chunkhash].css",
+            chunkFilename: "css/[name].[chunkhash].css"
         }),
     ],
     module: {
@@ -32,6 +33,14 @@ const prodConfig = {
                     }]
                 ]
             }
+        }, {
+            test: /\.(png|jpg|jpeg|gif)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'images'
+                },
+            }, ],
         }, {
             test: /\.css|less/,
             include: /(src)/,
@@ -60,8 +69,8 @@ const prodConfig = {
             include: /(node_modules)/,
             use: [{
                 loader: MiniCssExtractPlugin.loader,
-                options:{
-                    filename:'[name].css'
+                options: {
+                    filename: '[name].css'
                 }
             }, {
                 loader: 'css-loader',
@@ -73,20 +82,21 @@ const prodConfig = {
     optimization: {
         minimizer: [
             new UglifyJsPlugin(),
+            new OptimizeCssAssetsPlugin()
         ],
         splitChunks: {
             cacheGroups: {
                 react: {
-                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-redux|redux|redux-thunk)[\\/]/,
                     name: 'react',
                     chunks: 'all',
-                    priority:2
+                    priority: 2
                 },
                 vender: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vender',
                     chunks: 'all',
-                    priority:1
+                    priority: 1
                 }
             }
         },

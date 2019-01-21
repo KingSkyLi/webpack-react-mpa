@@ -21,7 +21,8 @@ rewrites.push({
 const devConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].js'
+        filename: 'js/[name].js',
+        publicPath: '/'
     },
     mode: 'development',
     devServer: {
@@ -50,6 +51,14 @@ const devConfig = {
                     }]
                 ]
             }
+        }, {
+            test: /\.(png|jpg|jpeg|gif)$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'images'
+                },
+            }, ],
         }, {
             test: /\.css|less$/,
             exclude: /(node_modules)/,

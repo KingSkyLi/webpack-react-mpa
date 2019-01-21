@@ -5,8 +5,18 @@ var path = require('path');
 var fs = require('fs');
 
 app.use(express.static(path.join(__dirname, '../dist/')));
+
 app.get('/', function (req, res) {
     fs.readFile(path.join(__dirname, '../dist/index.html'), 'utf-8', function (err, data) {
+        if (err) {
+            throw err;
+        }
+        res.end(data);
+    });
+});
+
+app.get('/detail', function (req, res) {
+    fs.readFile(path.join(__dirname, '../dist/detail.html'), 'utf-8', function (err, data) {
         if (err) {
             throw err;
         }

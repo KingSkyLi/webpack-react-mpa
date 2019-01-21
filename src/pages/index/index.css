@@ -1,0 +1,22 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid lightseagreen;
+  color: #dddddd;
+  display: flex;
+  transition: height 1s;
+}
+.slider {
+  background: lightcoral;
+}
+.header {
+  background: lightblue;
+}
+.footer {
+  background: lightgray;
+}
