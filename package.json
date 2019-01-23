@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clear": "rimraf dist",
+    "node:dev":"cross-env NODE_ENV=development nodemon node-server/node-server.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "node:prod":"cross-env NODE_ENV=production nodemon node-server/node-server.js",
     "prod": "cross-env NODE_ENV=production npm run clear && webpack --config webpack.config.prod.js"
   },
   "author": "lipengfei",

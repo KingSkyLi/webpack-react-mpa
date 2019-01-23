@@ -9,14 +9,14 @@ const pagesConfig = require('./pages.config');
 const prodConfig = {
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].[chunkhash].js',
+        filename: 'static/js/[name].[chunkhash].js',
         publicPath: '/',
     },
     mode: 'production',
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].[chunkhash].css",
-            chunkFilename: "css/[name].[chunkhash].css"
+            filename: "static/css/[name].[chunkhash].css",
+            chunkFilename: "static/css/[name].[chunkhash].css"
         }),
     ],
     module: {
@@ -38,7 +38,7 @@ const prodConfig = {
             use: [{
                 loader: 'file-loader',
                 options: {
-                    outputPath: 'images'
+                    outputPath: 'static/images'
                 },
             }, ],
         }, {

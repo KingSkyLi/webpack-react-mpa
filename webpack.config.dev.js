@@ -28,7 +28,7 @@ const devConfig = {
     devServer: {
         host: '0.0.0.0',
         port: '9100',
-        contentBase: path.resolve(__dirname, 'dist'),
+        contentBase: path.resolve(__dirname, 'dist/public/'),
         overlay: {
             errors: true
         },
