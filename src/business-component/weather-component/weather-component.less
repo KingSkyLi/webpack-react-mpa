@@ -1,0 +1,31 @@
+.for-png(38);
+.for-png(@n,@i:0) when (@i =< @n){
+    .png@{i}{
+        background-image: url('./images/@{i}.png');
+        background-repeat: no-repeat;
+        background-size:contain;  
+        width: 60px;
+        min-height: 88px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        &:hover{
+            cursor: pointer;
+            background-color:rgba(0,0,0,.3);
+            border-radius: 5px;
+            color: #ffffff; 
+        }
+        span{
+            text-align: center;
+        }
+    }
+    .for-png(@n,(@i+1))
+}
+.weather_list{
+    display: flex;
+    width: 210px;
+    justify-content: space-around;
+    background: rgba(0,0,0,.3);
+    border-radius: 5px;
+    padding: 3px 0px;
+}

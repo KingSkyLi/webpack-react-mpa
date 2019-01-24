@@ -36,6 +36,11 @@ const devConfig = {
             rewrites,
         },
         hot: true,
+        proxy: {
+            "/api": {
+              target: 'http://localhost:3000',
+            }
+        },
     },
     module: {
         rules: [{
@@ -54,10 +59,10 @@ const devConfig = {
         }, {
             test: /\.(png|jpg|jpeg|gif)$/,
             use: [{
-                loader: 'file-loader',
-                options: {
-                    outputPath: 'images'
-                },
+                loader:'url-loader',
+                options:{
+                    limit:5000
+                }
             }, ],
         }, {
             test: /\.css|less$/,

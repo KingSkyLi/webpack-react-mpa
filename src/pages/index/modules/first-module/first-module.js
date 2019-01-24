@@ -15,7 +15,7 @@ class FirstModule extends React.Component {
         return (
             <div>
                 <h2 className={FirstModuleStyle['first-module']}>首页的第一个模块</h2>
-                <img src={img200} />
+                {/* <img src={img200} /> */}
                 <div>index_num={this.props.index_num}</div>
                 <button onClick={add}>加+</button>
             </div>

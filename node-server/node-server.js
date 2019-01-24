@@ -5,6 +5,9 @@ var path = require('path');
 var fs = require('fs');
 
 app.use(express.static(path.resolve('dist')));
+
+app.use('/api/weather',require('./business-component-server/weather-server.js'));
+
 app.get('/', function (req, res) {
     res.sendfile((path.resolve('dist/index.html')));
 });

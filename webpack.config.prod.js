@@ -35,12 +35,15 @@ const prodConfig = {
             }
         }, {
             test: /\.(png|jpg|jpeg|gif)$/,
-            use: [{
-                loader: 'file-loader',
-                options: {
-                    outputPath: 'static/images'
-                },
-            }, ],
+            use: [ 
+                {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 5000,
+                        outputPath: 'static/images'
+                    }
+                }
+            ],
         }, {
             test: /\.css|less/,
             include: /(src)/,
