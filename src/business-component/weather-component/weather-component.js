@@ -40,17 +40,22 @@ export default class WeatherCompenent extends React.Component {
     render() {
         return (
             <div>
-                <h3>这是一个天气组件</h3>
                 <div className={WeatherStyle.weather_list}>
                     {
                         this.state.weatherList.map((item, index) => {
                             return (
-                                <div key={index}>
+                                <div key={index} className={WeatherStyle.everyday}>
                                     <div className={WeatherStyle[`png${item.code_day}`]}>
                                         <span>昼:{item.text_day}</span>
                                     </div>
                                     <div className={WeatherStyle[`png${item.code_night}`]}>
                                         <span>夜:{item.text_night}</span>
+                                    </div>
+                                    <div className={WeatherStyle.temperature}>
+                                        {`${item.low}°C`}~{`${item.high}°C`}
+                                    </div>
+                                    <div className={WeatherStyle.date}>
+                                       {item.date}
                                     </div>
                                 </div>
                             )

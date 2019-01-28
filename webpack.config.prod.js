@@ -95,6 +95,12 @@ const prodConfig = {
                     chunks: 'all',
                     priority: 2
                 },
+                jquery: {
+                    test: /[\\/]node_modules[\\/](jquery)[\\/]/,
+                    name: 'jquery',
+                    chunks: 'all',
+                    priority: 2
+                },
                 vender: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vender',

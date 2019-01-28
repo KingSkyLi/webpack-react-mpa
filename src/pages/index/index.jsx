@@ -1,13 +1,8 @@
+var $ = require('jquery');
+import '../../assets/js/ripples/jquery.ripples-min';
 import React from 'react';
-import PageHeader from '../../components/platform-header/platform-header';
-import PageFooter from '../../components/platform-footer/platform-footer';
-import FirstModule from './modules/first-module/first-module';
-import WeatherCompenent from '../../business-component/weather-component/weather-component';
-import {Layout, Icon, Button} from 'antd'
-
 import indexTyle from './index.less';
-
-const {Header, Footer, Sider, Content} = Layout;
+import WeatherComponent from '../../business-component/weather-component/weather-component';
 
 class Index extends React.Component {
     constructor(props) {
@@ -16,25 +11,22 @@ class Index extends React.Component {
             date: new Date()
         };
     }
+    componentDidMount() {
+        $('#warter-ripples').ripples({
+            dropRadius: 16,
+            perturbance: 0.03,
+            resolution: 512
+        });
+    }
     render() {
         return (
-            <div>
-                <Layout>
-                    <Header className={indexTyle.header}>
-                        <PageHeader/>
-                    </Header>
-                    <Content>
-                        <p>这是index首页</p>
-                        <div>
-                            <WeatherCompenent />
-                        </div>
-                        <a href="/detail">到detail页</a>
-                        <FirstModule/>
-                    </Content>
-                    <Footer className={indexTyle.footer}>
-                        <PageFooter/>
-                    </Footer>
-                </Layout>
+            <div className={indexTyle.page}>
+                <div className={indexTyle.weather}>
+                    <WeatherComponent />
+                </div>
+                <div id="warter-ripples" className={indexTyle.ripples}>
+                    <div className={indexTyle.box}>欢迎来到历鹏飞的个人网站</div>
+                </div>
             </div>
         )
     }

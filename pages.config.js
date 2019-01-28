@@ -9,7 +9,7 @@ const pages = [
         },
         name:'index',
         description:'这是首页',
-        chunks:['react','vender','index']
+        chunks:['jquery','react','vender','index']
     },{
         title:'detail',
         entry:{
@@ -46,7 +46,6 @@ const pageEntrys = [];
 pages.map(item=>{
     pageEntrys.push(generatePage(item));
 });
-// console.log(pageEntrys);
 module.exports = {
     pageEntrys,
     pages,
