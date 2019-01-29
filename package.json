@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clear": "rimraf dist",
+    "clear": "rimraf dist && rimraf server",
     "node:dev": "cross-env NODE_ENV=development nodemon node-server/node-server.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "node:prod": "cross-env NODE_ENV=production nodemon node-server/node-server.js",
-    "prod": "cross-env NODE_ENV=production npm run clear && webpack --config webpack.config.prod.js"
+    "prod": "cross-env NODE_ENV=production npm run clear && webpack --config webpack.config.prod.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack.config.server.js"
   },
   "author": "lipengfei",
   "license": "ISC",

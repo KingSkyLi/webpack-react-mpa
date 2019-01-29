@@ -14,10 +14,8 @@ export default class WeatherCompenent extends React.Component {
     }
     getWeatherDaily() {
         WeatherServer.getWeatherDaily().then(res => {
-            console.log(res);
             if (res.status === 200) {
                 let data = res.data;
-                console.log(data);
                 this.setState({
                     weatherList: data.daily
                 })
@@ -30,7 +28,6 @@ export default class WeatherCompenent extends React.Component {
         WeatherServer.getWeatherSuggestion().then((res) => {
             if (res.status === 200) {
                 let data = res.data;
-                console.log(data);
             }
         }).catch(err => {
             console.log(err);

@@ -35,14 +35,24 @@ const prodConfig = {
             }
         }, {
             test: /\.(png|jpg|jpeg|gif)$/,
-            use: [ 
+            use: [
                 {
                     loader: 'url-loader',
                     options: {
-                        limit: 5000,
+                        limit: 20000,
                         outputPath: 'static/images'
                     }
-                }
+                },
+                // {
+                //     loader: "img-loader",
+                //     options: {
+                //         plugins: [
+                //             require("imagemin-pngquant")({
+                //                 quality: "80"
+                //             })
+                //         ]
+                //     }
+                // }
             ],
         }, {
             test: /\.css|less/,
