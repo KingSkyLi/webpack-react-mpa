@@ -39,7 +39,7 @@ const prodConfig = {
                 {
                     loader: 'url-loader',
                     options: {
-                        limit: 20000,
+                        limit: 5000,
                         outputPath: 'static/images'
                     }
                 },
